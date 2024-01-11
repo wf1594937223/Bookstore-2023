@@ -447,4 +447,14 @@ void init_prog()
 	file.close();
     return;
 }
+void end_prog()
+{
+    fstream file;
+	file.open("0.uti", std::ios::binary | std::ios::in | std::ios::out);
+	file.write(reinterpret_cast<char *> (&tot_txt), sizeof(int));
+	file.write(reinterpret_cast<char *> (&beg), sizeof(int));
+	file.write(reinterpret_cast<char *> (&tot_str), sizeof(int));
+	file.close();
+    return;
+}
 }

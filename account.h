@@ -53,6 +53,7 @@ void logout()
 {
     int x = 0;
     fstream file;
+    if (!sum) return;
     file.open("0.acc", std::ios::binary | std::ios::in | std::ios::out);
     file.seekp(getpla_acc(sum));
     file.write(reinterpret_cast <char *> (&x), sizeof(int));
@@ -74,7 +75,14 @@ int now_select()
     file.open("0.acc", std::ios::binary | std::ios::in | std::ios::out);
     file.seekg(getpla_acc(sum) + sizeof(int));
     file.read(reinterpret_cast <char *> (&x), sizeof(int));
-    return x;
+    return  x;
+}
+void end()
+{
+    fstream file;
+    file.open("0.acc", std::ios::binary | std::ios::in | std::ios::out);
+    file.seekp(0);
+    file.write(reinterpret_cast <char *> (&sum), sizeof(double));
 }
 }
 #endif

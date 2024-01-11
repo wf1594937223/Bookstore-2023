@@ -16,5 +16,7 @@ void depart_txt(int x);
 void insert(string index, int value);
 void del(string index, int value);
 vector <int> find(string index);
+void init_prog();
+void end_prog();
 }
 #endif 

@@ -55,6 +55,7 @@ double que_pay(int x)
 void add_earn(double x)
 {
     fstream file; double u, v;
+    file.open("0.fin", std::ios::binary | std::ios::in | std::ios::out);
     file.seekg(getpla_fin(sum) + sizeof(int));
     file.read(reinterpret_cast <char *> (&u), sizeof(double));
     file.read(reinterpret_cast <char *> (&v), sizeof(double));
@@ -68,6 +69,7 @@ void add_earn(double x)
 void add_pay(double x)
 {
     fstream file; double u, v;
+    file.open("0.fin", std::ios::binary | std::ios::in | std::ios::out);
     file.seekg(getpla_fin(sum) + sizeof(int));
     file.read(reinterpret_cast <char *> (&u), sizeof(double));
     file.read(reinterpret_cast <char *> (&v), sizeof(double));
@@ -77,6 +79,13 @@ void add_pay(double x)
     file.write(reinterpret_cast <char *> (&sum), sizeof(int));
     file.write(reinterpret_cast <char *> (&u), sizeof(double));
     file.write(reinterpret_cast <char *> (&v), sizeof(double));
+}
+void end()
+{
+    fstream file;
+    file.open("0.fin", std::ios::binary | std::ios::in | std::ios::out);
+    file.seekp(0);
+    file.write(reinterpret_cast <char *> (&sum), sizeof(double));
 }
 }
 #endif

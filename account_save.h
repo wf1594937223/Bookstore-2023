@@ -11,12 +11,31 @@ namespace account_save//id, state, type(1,3,7), userid, password, username
 {
     int getpla_book(int x)
     {
-        return (x - 1) * (64 * 3 + 3 * sizeof(int));
+        return (x - 1) * (64 * 3 + 3 * sizeof(int)) + sizeof(int);
     }
-    int i, j, n, m;
-    void add(int id, int type, string userid, string password, string username)
+    int i, j, n, m, sum = 0;
+    void init_prog()
     {
-        fstream file; int state = 1;
+        fstream file;
+	    file.open("account_save.txt", std::ios::binary | std::ios::in | std::ios::out);
+	    if(!file.good())
+	    	file.write(reinterpret_cast<char *> (&sum), sizeof(int));
+	    else
+	    	file.read(reinterpret_cast<char *> (&sum), sizeof(int));
+	    file.close();
+        return;
+    }
+    void end_prog()
+    {
+        fstream file;
+	    file.open("account_save.txt", std::ios::binary | std::ios::in | std::ios::out);
+    	file.write(reinterpret_cast<char *> (&sum), sizeof(int));
+    	file.close();
+        return;
+    }
+    void add(int type, string userid, string password, string username)
+    {
+        fstream file; int state = 1; sum++; int id = sum;
         file.open("account_save.txt", std::ios::binary | std::ios::in | std::ios::out);
         file.seekp(getpla_book(id));
         file.write(reinterpret_cast<char *>(&id), sizeof(int));
