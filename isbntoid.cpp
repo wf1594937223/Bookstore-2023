@@ -368,6 +368,41 @@ void del(string index, int value)
         return;
     }
 }
+vector <int> all()
+{
+	fstream file0, file1; vector <int> ve;
+	file0.open("0.iti", std::ios::binary | std::ios::in | std::ios::out);
+	file1.open("1.iti", std::ios::binary | std::ios::in | std::ios::out);
+    int i = beg, j, tott = 0;
+    char cstr[65];
+    while(i)
+    {
+        if (!i) break;
+        file0.seekg(getpla_blo(i));
+        int siz, x, y, z, val; string s1, s2;
+        file0.read(reinterpret_cast<char *> (&siz), sizeof(int));
+        file0.read(reinterpret_cast<char *> (&x), sizeof(int));//previous block id
+        file0.read(reinterpret_cast<char *> (&y), sizeof(int));//next block id
+        file0.read(cstr, 64); s1 = s2 = cstr;//maxinum str
+        file0.read(reinterpret_cast<char *> (&val), sizeof(int));//maxinum value
+        file0.read(reinterpret_cast<char *> (&z), sizeof(int));//first store id
+        j = z;
+        for(;;)
+        {
+            if (!j) break;
+            file1.seekg(getpla_txt(j));
+            file1.read(cstr, 64); s1 = cstr;
+            int u, v, w;
+            file1.read(reinterpret_cast<char *> (&u), sizeof(int));
+            file1.read(reinterpret_cast<char *> (&v), sizeof(int));
+            file1.read(reinterpret_cast<char *> (&w), sizeof(int));
+			j = w;
+            ve.push_back(u);
+        }
+        i = y;
+    }
+    return ve;
+}
 vector <int> find(string index)
 {
 	fstream file0, file1; vector <int> ve;

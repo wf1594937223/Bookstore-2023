@@ -39,6 +39,8 @@ void login(int account_id)
     file.open("0.acc", std::ios::binary | std::ios::in | std::ios::out);
     file.seekp(getpla_acc(sum));
     file.write(reinterpret_cast <char *> (&account_id), sizeof(int));
+    int x = 0;
+    file.write(reinterpret_cast <char *> (&x), sizeof(int));
     return;
 }
 void select(int book_id)
@@ -64,6 +66,7 @@ void logout()
 int now_account()
 {
     fstream file; int x;
+    if (!sum) return 0;
     file.open("0.acc", std::ios::binary | std::ios::in | std::ios::out);
     file.seekg(getpla_acc(sum));
     file.read(reinterpret_cast <char *> (&x), sizeof(int));
@@ -75,7 +78,7 @@ int now_select()
     file.open("0.acc", std::ios::binary | std::ios::in | std::ios::out);
     file.seekg(getpla_acc(sum) + sizeof(int));
     file.read(reinterpret_cast <char *> (&x), sizeof(int));
-    return  x;
+    return x;
 }
 void end()
 {

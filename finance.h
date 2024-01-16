@@ -32,22 +32,50 @@ void init()
     }
     return;
 }
-double que_earn(int x)
+double que_earn(int count)
 {
-    fstream file; double x, y;
+    fstream file; double x = 0, y = 0;
     file.open("0.fin", std::ios::binary | std::ios::in | std::ios::out);
-    file.seekg(getpla_fin(sum - x) + sizeof(int));
+    if (sum == 0 || count == 0) return 0;
+    file.seekg(getpla_fin(sum - count) + sizeof(int));
     file.read(reinterpret_cast <char *> (&x), sizeof(double));
+    if (sum == count) x = 0;
     file.seekg(getpla_fin(sum) + sizeof(int));
     file.read(reinterpret_cast <char *> (&y), sizeof(double));
     return y - x;
 }
-double que_pay(int x)
+double que_earn_all()
+{
+    fstream file; double x, y; int count = sum;
+    file.open("0.fin", std::ios::binary | std::ios::in | std::ios::out);
+    if (sum == 0 || count == 0) return 0;
+    file.seekg(getpla_fin(sum - count) + sizeof(int));
+    file.read(reinterpret_cast <char *> (&x), sizeof(double));
+    if (sum == count) x = 0;
+    file.seekg(getpla_fin(sum) + sizeof(int));
+    file.read(reinterpret_cast <char *> (&y), sizeof(double));
+    return y - x;
+}
+double que_pay(int count)
 {
     fstream file; double x, y;
     file.open("0.fin", std::ios::binary | std::ios::in | std::ios::out);
-    file.seekg(getpla_fin(sum - x) + sizeof(int) + sizeof(double));
+    if (sum == 0 || count == 0) return 0;
+    file.seekg(getpla_fin(sum - count) + sizeof(int) + sizeof(double));
     file.read(reinterpret_cast <char *> (&x), sizeof(double));
+    if (sum == count) x = 0;
+    file.seekg(getpla_fin(sum) + sizeof(int) + sizeof(double));
+    file.read(reinterpret_cast <char *> (&y), sizeof(double));
+    return y - x;
+}
+double que_pay_all()
+{
+    fstream file; double x, y; int count = sum;
+    file.open("0.fin", std::ios::binary | std::ios::in | std::ios::out);
+    if (sum == 0 || count == 0) return 0;
+    file.seekg(getpla_fin(sum - count) + sizeof(int) + sizeof(double));
+    file.read(reinterpret_cast <char *> (&x), sizeof(double));
+    if (sum == count) x = 0;
     file.seekg(getpla_fin(sum) + sizeof(int) + sizeof(double));
     file.read(reinterpret_cast <char *> (&y), sizeof(double));
     return y - x;
