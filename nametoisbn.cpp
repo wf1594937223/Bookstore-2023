@@ -1,8 +1,5 @@
 //一个文件存块开始 另一个存具体内容
-# include <iostream>
-# include <fstream>
-# include <string>
-# include <vector>
+# include "nametoisbn.h"
 using std::string;
 using std::fstream;
 using std::ifstream;
@@ -10,10 +7,6 @@ using std::ofstream;
 using std::vector;
 namespace nti
 {
-struct NODE
-{
-    int id, l, r;
-};
 const int lim_txt = 4;
 const int half_siz = lim_txt / 2;
 int tot_txt, tot_str, beg;
@@ -49,7 +42,7 @@ void init_total()
 }
 int getpla_blo(int x)
 {
-    return ((x - 1) * 5 + 2) * sizeof(int) + (x - 1) * 128;
+    return ((x - 1) * 4 + 3) * sizeof(int) + (x - 1) * 128;
 }
 int getpla_txt(int x)
 {
@@ -123,6 +116,11 @@ void depart_txt(int x)
     file0.write(s3.c_str(), 64);
 //    file0.write(reinterpret_cast<char *> (&a1), sizeof(int));
     file0.write(reinterpret_cast<char *> (&w), sizeof(int));
+    if (a5)
+    {
+        file0.seekp(getpla_blo(a5) + sizeof(int));
+        file0.write(reinterpret_cast<char *> (&tot_txt), sizeof(int));
+    }
 	file0.close();
 	file1.close();
     return;

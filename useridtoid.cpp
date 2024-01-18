@@ -145,6 +145,11 @@ void depart_txt(int x)
     file0.write(s1.c_str(), 64);
     file0.write(reinterpret_cast<char *> (&a1), sizeof(int));
     file0.write(reinterpret_cast<char *> (&w), sizeof(int));
+    if (a5)
+    {
+        file0.seekp(getpla_blo(a5) + sizeof(int));
+        file0.write(reinterpret_cast<char *> (&tot_txt), sizeof(int));
+    }
 	file0.close();
 	file1.close();
     return;

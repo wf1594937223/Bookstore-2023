@@ -10,7 +10,7 @@ struct NODE
 {
     int id, l, r;
 };
-const int lim_txt = 4;
+const int lim_txt = 330;
 const int half_siz = lim_txt / 2;
 string s1, s2;
 int tot_txt, tot_str, beg;
@@ -96,6 +96,7 @@ void depart_txt(int x)
     file0.seekg(getpla_blo(x) + sizeof(int));
     file0.read(reinterpret_cast<char *> (&a3), sizeof(int));
     file0.read(reinterpret_cast<char *> (&a5), sizeof(int));
+//    std::cout << a3 << " " << x << " " << tot_txt << " " << a5 << std::endl;
 //	std::cout << a3 << a5 << std::endl;
 	file0.seekg(getpla_blo(x) + 4 * sizeof(int) + 64);
     file0.read(reinterpret_cast<char *> (&j), sizeof(int));
@@ -141,6 +142,11 @@ void depart_txt(int x)
     file0.write(s1.c_str(), 64);
     file0.write(reinterpret_cast<char *> (&a1), sizeof(int));
     file0.write(reinterpret_cast<char *> (&w), sizeof(int));
+    if (a5)
+    {
+        file0.seekp(getpla_blo(a5) + sizeof(int));
+        file0.write(reinterpret_cast<char *> (&tot_txt), sizeof(int));
+    }
 	file0.close();
 	file1.close();
     return;
@@ -295,7 +301,7 @@ void del(string index, int value)
                 continue;
             }
             break;
-        }//j : first store id whose storage is larger than this
+        }//j : first store id whose storage is larger than this or the last in this block
         int a1, a2, a3, a4;
         file1.seekg(getpla_txt(j));
         file1.read(cstr, 64); s1 = cstr;
@@ -307,6 +313,7 @@ void del(string index, int value)
         file0.write(reinterpret_cast<char *> (&siz), sizeof(int));
 		if ((!a2) && (!a3))
 		{
+//            std::cout << "!!!" << siz << " " << i << " " << x << " " << y << " " << beg << std::endl;
 			file0.seekp(getpla_blo(i));
 			a4 = 0; s1 = "";
 			file0.write(reinterpret_cast<char *>(&a4), sizeof(int));
@@ -319,17 +326,22 @@ void del(string index, int value)
 			{
 				file0.seekp(getpla_blo(x) + 2 * sizeof(int));
 				file0.write(reinterpret_cast<char *> (&y), sizeof(int));
+//                std::cout << y << std::endl;
 			}
 			else if(y)
 				beg = y;
+            else
+                beg = 1;
 			if(y)
 			{
 				file0.seekp(getpla_blo(y) + sizeof(int));
 				file0.write(reinterpret_cast<char *> (&x), sizeof(int));
+//                std::cout << x << std::endl;
 			}
 //			file.seekp(sizeof(int));
 //			file.write(reinterpret_cast<char *> (&x), sizeof(int));
 //			file.write(reinterpret_cast<char *> (&y), sizeof(int));
+//            std::cout << "!!!" << siz << " " << i << " " << x << " " << y << " " << beg << std::endl;
 			return;
 		}
         if (a2)
@@ -416,7 +428,8 @@ void find(string index)
                 return;
             }
             if (s1 < index) continue;
-            std::cout << u << ' ';
+//            std::cout << u << "!" << i << ' ';
+            std::cout << u << " ";
 			tott++;
         }
         i = y;
@@ -427,8 +440,8 @@ void find(string index)
 }
 int main()
 {
-//	freopen("5.in", "r", stdin);
-//	freopen("5.ans", "w", stdout);
+	freopen("5.in", "r", stdin);
+	freopen("5.ans", "w", stdout);
     int i, j, n, m = 0;
 	fstream file0, file1;
     std::ios_base::sync_with_stdio(false);
@@ -463,7 +476,7 @@ int main()
         }
         if (s == "find")
         {
-            std::cin >> s1;
+            std::cin >> s1; //std::cout << s1 << " ";
             find(s1);
         }
 //		file0.open("0.txt");
