@@ -15,25 +15,6 @@ namespace account_save//id, state, type(1,3,7), userid, password, username
         return (x - 1) * (64 * 3 + 3 * sizeof(int)) + sizeof(int);
     }
     int i, j, n, m, sum = 0;
-    void init_prog()
-    {
-        fstream file;
-	    file.open("account_save.txt", std::ios::binary | std::ios::in | std::ios::out);
-	    if(!file.good())
-	    	file.write(reinterpret_cast<char *> (&sum), sizeof(int));
-	    else
-	    	file.read(reinterpret_cast<char *> (&sum), sizeof(int));
-	    file.close();
-        return;
-    }
-    void end_prog()
-    {
-        fstream file;
-	    file.open("account_save.txt", std::ios::binary | std::ios::in | std::ios::out);
-    	file.write(reinterpret_cast<char *> (&sum), sizeof(int));
-    	file.close();
-        return;
-    }
     void add(int type, string userid, string password, string username)
     {
         if (uti::find(userid).size()) return;
@@ -122,6 +103,30 @@ namespace account_save//id, state, type(1,3,7), userid, password, username
         file.open("account_save.txt", std::ios::binary | std::ios::in | std::ios::out);
         file.seekp(getpla_user(id) + sizeof(int));
         file.write(reinterpret_cast<char *>(&x), sizeof(int));
+    }
+    void init_prog()
+    {
+        fstream file;
+	    file.open("account_save.txt", std::ios::binary | std::ios::in | std::ios::out);
+	    if(!file.good())
+        {
+            file.close();
+            file.open("account_save.txt", std::ios::binary | std::ios::out);
+	    	file.write(reinterpret_cast<char *> (&sum), sizeof(int));
+            add(7, "root", "sjtu", "root");
+        }
+        else
+	    	file.read(reinterpret_cast<char *> (&sum), sizeof(int));
+	    file.close();
+        return;
+    }
+    void end_prog()
+    {
+        fstream file;
+	    file.open("account_save.txt", std::ios::binary | std::ios::in | std::ios::out);
+    	file.write(reinterpret_cast<char *> (&sum), sizeof(int));
+    	file.close();
+        return;
     }
 }
 #endif

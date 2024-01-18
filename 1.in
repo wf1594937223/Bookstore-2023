@@ -1,0 +1,4 @@
+su root sjtu
+select first
+show
+exit

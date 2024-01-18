@@ -89,6 +89,7 @@ void output(vector<int> ve)
     int i, j = ve.size();
     for (i = 0; i < j; i++)
     {
+//        std::cout << ve[i] << std::endl;
         std::cout << book::book_isbn(ve[i]) << '\t';
         std::cout << book::book_bookname(ve[i]) << '\t';
         std::cout << book::book_author(ve[i]) << '\t';
@@ -117,6 +118,7 @@ void output2(vector<string> ve)
 }
 int main()
 {
+//    freopen("1.in", "r", stdin);
     account::init();
     finance::init();
     account_save::init_prog();
@@ -211,7 +213,7 @@ int main()
             account_save::del(id);
             continue;
         }
-        if (s[0] == 's' && s[1] == 'h' && s[5] == '-')
+        if (s[0] == 's' && s[1] == 'h' && (s.length() == 4 || s[5] == '-'))
         {
             a1 = account::now_account(); a2 = account_save::account_type(a1);
             if (a2 < 1) continue;
@@ -277,6 +279,7 @@ int main()
             {
                 book::add(s1);
                 a1 = iti::find(s1)[0];
+//            std::cout << a1 << std::endl;
                 account::select(a1);
                 continue;
             }
@@ -289,7 +292,7 @@ int main()
             a1 = account::now_account(); a2 = account_save::account_type(a1);
             if (a2 < 3) continue;
             int id = account::now_select();
-            if (!id) return;
+            if (!id) continue;
             a1 = 0; a2 = 0; a3 = 0; a4 = 0; a5 = 0;
             while(1)
             {
@@ -301,7 +304,7 @@ int main()
                 if (s1[1] == 'k') a4++;
                 if (s1[1] == 'p') a5++;
             }
-            if (a1 > 1 || a2 > 1 || a3 > 1 || a4 > 1 || a5 > 1) return;
+            if (a1 > 1 || a2 > 1 || a3 > 1 || a4 > 1 || a5 > 1) continue;
             m = 0;
             while(1)
             {
@@ -388,3 +391,4 @@ int main()
     ati::end_prog();
     return 0;
 }
+//g++ bookstore.cpp nametoisbn.cpp authortoisbn.cpp keywordstoisbn.cpp useridtoid.cpp isbntoid.cpp -o code

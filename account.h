@@ -23,6 +23,8 @@ void init()
     if (!file.good())
     {
         sum = 0;
+        file.close();
+        file.open("0.acc", std::ios::binary | std::ios::out);
         file.write(reinterpret_cast <char *> (&sum), sizeof(int));
     }
     else

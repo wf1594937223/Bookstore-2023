@@ -41,8 +41,12 @@ namespace book
         fstream file;
 	    file.open("book.txt", std::ios::binary | std::ios::in | std::ios::out);
 	    if(!file.good())
+        {
+            file.close();
+            file.open("book.txt", std::ios::binary | std::ios::out);
 	    	file.write(reinterpret_cast<char *> (&sum), sizeof(int));
-	    else
+        }
+        else
 	    	file.read(reinterpret_cast<char *> (&sum), sizeof(int));
 	    file.close();
         return;
@@ -57,7 +61,7 @@ namespace book
     }
     void add(string isbn, string bookname = "", string author = "", int quantity = 0, double price = 0, double total_cost = 0, string keywords = "")
     {
-        fstream file; sum++; int id = sum;
+        fstream file; sum++; int id = sum;// std::cout << "!" << id;
         file.open("book.txt", std::ios::binary | std::ios::in | std::ios::out);
         file.seekp(getpla_book(id));
         file.write(reinterpret_cast<char *>(&id), sizeof(int));
@@ -77,15 +81,6 @@ namespace book
         file.open("book.txt", std::ios::binary | std::ios::in | std::ios::out);
         file.seekg(getpla_book(id) + sizeof(int));
         file.read(c, 20); s = c;
-        return s;
-    }
-    string book_bookname(int id)
-    {
-        string s; char c[64];
-        fstream file;
-        file.open("book.txt", std::ios::binary | std::ios::in | std::ios::out);
-        file.seekg(getpla_book(id) + 20 + sizeof(int));
-        file.read(c, 60); s = c;
         return s;
     }
     string book_bookname(int id)
