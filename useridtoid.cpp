@@ -14,7 +14,7 @@ struct NODE
 {
     int id, l, r;
 };
-const int lim_txt = 4;
+const int lim_txt = 400;
 const int half_siz = lim_txt / 2;
 string s1, s2;
 int tot_txt, tot_str, beg;

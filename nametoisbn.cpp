@@ -7,7 +7,7 @@ using std::ofstream;
 using std::vector;
 namespace nti
 {
-const int lim_txt = 4;
+const int lim_txt = 400;
 const int half_siz = lim_txt / 2;
 int tot_txt, tot_str, beg;
 string tostr(int x)
