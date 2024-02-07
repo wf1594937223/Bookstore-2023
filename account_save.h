@@ -41,6 +41,7 @@ namespace account_save//id, state, type(1,3,7), userid, password, username
     }
     int account_type(int id)
     {
+        if (!id) return -1;
         string s; char c[65]; int x;
         fstream file;
         file.open("account_save.txt", std::ios::binary | std::ios::in | std::ios::out);
