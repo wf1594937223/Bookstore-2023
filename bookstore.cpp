@@ -134,8 +134,8 @@ void inva(string x)
 }
 int main()
 {
-//    freopen("1.in", "r", stdin);
-//    freopen("4.out", "w", stdout);
+    freopen("3.in", "r", stdin);
+    freopen("3.out", "w", stdout);
     account::init();
     finance::init();
     book::init_prog();
@@ -147,7 +147,7 @@ int main()
     account_save::init_prog();
     int i, j, n, m, acc_id, book_id;
     int a1, a2, a3, a4, a5;
-    string s, s1, s2, s3, s4;
+    string s, s1, s2, s3, s4, s5;
 //        std::cout << "OK!" << std::endl;
 //        return 0;
     while(1)
@@ -165,6 +165,8 @@ int main()
             a1 = account::now_account(); a2 = account_save::account_type(a1);
             m = gtpla(s, m); s2 = gtstr(s, m);
             if (s2 == "" && n <= a2 || s2 != "" && s2 != s3) {inva(); continue;}
+            m = gtpla(s, m); s4 = gtstr(s, m);
+            if (s4 != "") {inva(); continue;}
             account::login(acc_id);
             account_save::account_login(acc_id);
             continue;
@@ -174,6 +176,8 @@ int main()
             a1 = account::now_account();
             a2 = account_save::account_type(a1);
             if (a2 < 1) {inva(); continue;}
+            m = gtpla(s, m); s4 = gtstr(s, m);
+            if (s4 != "") {inva(); continue;}
             int id = account::now_account();
             account_save::account_logout(id);
             account::logout();
@@ -184,6 +188,9 @@ int main()
             m = gtpla(s, m); s1 = gtstr(s, m);
             m = gtpla(s, m); s2 = gtstr(s, m);
             m = gtpla(s, m); s3 = gtstr(s, m);
+            if (s3 == "") {inva(); continue;}
+            m = gtpla(s, m); s4 = gtstr(s, m);
+            if (s4 != "") {inva(); continue;}
             account_save::add(1, s1, s2, s3);
             continue;
         }
@@ -194,6 +201,9 @@ int main()
             m = gtpla(s, m); s1 = gtstr(s, m);
             m = gtpla(s, m); s2 = gtstr(s, m);
             m = gtpla(s, m); s3 = gtstr(s, m);
+            m = gtpla(s, m); s4 = gtstr(s, m);
+            if (s4 != "") {inva(); continue;}
+            if (s2 == "") {inva(); continue;}
             if (!uti::find(s1).size()) {inva(); continue;}
             if (s3 == "")
             {
@@ -221,6 +231,10 @@ int main()
 //            std::cout << s3 << ' ' << a2 << ' ' <<  a1 << std::endl;
             m = gtpla(s, m); s3 = gtstr(s, m);
             if (a2 <= a1) {inva(); continue;}
+            if (uti::find(s1).size()) {inva(); continue;}
+            if (s3 == "") {inva(); continue;}
+            m = gtpla(s, m); s4 = gtstr(s, m);
+            if (s4 != "") {inva(); continue;}
             account_save::add(a1, s1, s2, s3);
             continue;
         }
@@ -230,6 +244,8 @@ int main()
             if (a2 < 7) {inva(); continue;}
             m = gtpla(s, m); s1 = gtstr(s, m);
             if (!uti::find(s1).size()) {inva(); continue;}
+            m = gtpla(s, m); s4 = gtstr(s, m);
+            if (s4 != "") {inva(); continue;}
             int id = uti::find(s1)[0];
             if (account_save::account_state(id) != 1) {inva(); continue;}
             account_save::del(id);
@@ -248,32 +264,40 @@ int main()
             if (s1[1] == 'I')
             {
                 m += 6; s2 = gtstr(s, m);
-                if (s2 == "") continue;
+                if (s2 == "") {inva(); continue;}
+                m = gtpla(s, m); s4 = gtstr(s, m);
+                if (s4 != "") {inva(); continue;}
                 output(iti::find(s2));
                 continue;
             }
             if (s1[1] == 'n')
             {
                 m += 7; s2 = gtstr2(s, m);
-                if (s2 == "") continue;
+                if (s2 == "") {inva(); continue;}
+                m = gtpla(s, m); s4 = gtstr(s, m);
+                if (s4 != "") {inva(); continue;}
                 output2(nti::find(s2));
                 continue;
             }
             if (s1[1] == 'a')
             {
                 m += 9; s2 = gtstr2(s, m);
-                if (s2 == "") continue;
+                if (s2 == "") {inva(); continue;}
+                m = gtpla(s, m); s4 = gtstr(s, m);
+                if (s4 != "") {inva(); continue;}
                 output2(ati::find(s2));
                 continue;
             }
             if (s1[1] == 'k')
             {
                 m += 10; s2 = gtstr2(s, m);
-                if (s2 == "") continue;
+                if (s2 == "") {inva(); continue;}
+                m = gtpla(s, m); s4 = gtstr(s, m);
+                if (s4 != "") {inva(); continue;}
                 int fl = 1, l = s2.length();
                 for (i = 0; i < l; i++)
                     if (s2[i] == '|') {fl = 0; break;}
-                if (!fl) continue;
+                if (!fl) {inva(); continue;}
                 output2(kti::find(s2));
                 continue;
             }
@@ -286,6 +310,8 @@ int main()
             m = gtpla(s, m); s1 = gtstr(s, m);
             m = gtpla(s, m); s2 = gtstr(s, m);
             if (!iti::find(s1).size()) continue;
+            m = gtpla(s, m); s4 = gtstr(s, m);
+            if (s4 != "") {inva(); continue;}
             a1 = iti::find(s1)[0];
             if (!checkint(s2)) {inva(); continue;}
             a2 = strtoint(s2); if (a2 <= 0) {inva(); continue;}
@@ -297,6 +323,8 @@ int main()
             a1 = account::now_account(); a2 = account_save::account_type(a1);
             if (a2 < 3) {inva(); continue;}
             m = gtpla(s, m); s1 = gtstr(s, m);
+            m = gtpla(s, m); s4 = gtstr(s, m);
+            if (s4 != "") {inva(); continue;}
             if (!iti::find(s1).size())
             {
                 book::add(s1);
@@ -335,35 +363,45 @@ int main()
                 if (s1[1] == 'I')
                 {
                     m += 6; s2 = gtstr(s, m);
-                    if (s2 == "") continue;
+                    if (s2 == "") {inva(); continue;}
+                    m = gtpla(s, m); s4 = gtstr(s, m);
+                    if (s4 != "") {inva(); continue;}
                     book::modify_isbn(id, s2);
                     continue;
                 }
                 if (s1[1] == 'n')
                 {
                     m += 7; s2 = gtstr2(s, m);
-                    if (s2 == "") continue;
+                    if (s2 == "") {inva(); continue;}
+                    m = gtpla(s, m); s4 = gtstr(s, m);
+                    if (s4 != "") {inva(); continue;}
                     book::modify_bookname(id, s2);
                     continue;
                 }
                 if (s1[1] == 'a')
                 {
                     m += 9; s2 = gtstr2(s, m);
-                    if (s2 == "") continue;
+                    if (s2 == "") {inva(); continue;}
+                    m = gtpla(s, m); s4 = gtstr(s, m);
+                    if (s4 != "") {inva(); continue;}
                     book::modify_author(id, s2);
                     continue;
                 }
                 if (s1[1] == 'k')
                 {
                     m += 10; s2 = gtstr2(s, m);
-                    if (s2 == "") continue;
+                    if (s2 == "") {inva(); continue;}
+                    m = gtpla(s, m); s4 = gtstr(s, m);
+                    if (s4 != "") {inva(); continue;}
                     book::modify_keywords(id, s2);
                     continue;
                 }
                 if (s1[1] == 'p')
                 {
                     m += 7; s2 = gtstr2(s, m);
-                    if (s2 == "") continue;
+                    if (s2 == "") {inva(); continue;}
+                    m = gtpla(s, m); s4 = gtstr(s, m);
+                    if (s4 != "") {inva(); continue;}
                     book::modify_price(id, strtodouble(s2));
                     continue;
                 }
@@ -376,6 +414,8 @@ int main()
             if (a2 < 3) {inva(); continue;}
             m = gtpla(s, m); s1 = gtstr(s, m);
             m = gtpla(s, m); s2 = gtstr(s, m);
+            m = gtpla(s, m); s4 = gtstr(s, m);
+            if (s4 != "") {inva(); continue;}
             a2 = account::now_select();
             if (!a2) {inva(); continue;}
             if (!checkint(s1)) {inva(); continue;}
@@ -391,6 +431,8 @@ int main()
             if (a2 < 7) {inva(); continue;}
             m = gtpla(s, m); s1 = gtstr(s, m);
             m = gtpla(s, m); s1 = gtstr(s, m);
+            m = gtpla(s, m); s4 = gtstr(s, m);
+            if (s4 != "") {inva(); continue;}
             if (s1 == "")
             {
                 std::cout << "+ " << finance::que_earn_all() << " - " << finance::que_pay_all() << '\n';
@@ -400,16 +442,16 @@ int main()
             std::cout << "+ " << finance::que_earn(a1) << " - " << finance::que_pay(a1) << '\n';
             continue;
         }
-        int fll = 0;
+        int fl = 0;
         for (i = s.size() - 1; i >= 0; i--)
         {
             if (s[i] != ' ')
             {
-                fll = 1;
+                fl = 1;
                 break;
             }
         }
-        if (fll) inva();
+        if (fl) inva();
     }
 
     account::end();
