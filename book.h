@@ -3,6 +3,7 @@
 # include <stdio.h>
 # include <iostream>
 # include <fstream>
+# include <iomanip>
 # include "isbntoid.h"
 # include "finance.h"
 # include "nametoisbn.h"
@@ -221,6 +222,7 @@ namespace book
         file.seekp(getpla_book(id) + 140 + sizeof(int));
         file.write(reinterpret_cast<char *>(&x), sizeof(int));
         finance::add_earn(book_price(id) * quantity);
+        std::cout << std::fixed << std::setprecision(2) << book_price(id) * quantity << std::endl;
         return;
     }
     void import(int id, int quantity, double total_cost)
@@ -230,6 +232,7 @@ namespace book
         file.open("book.txt", std::ios::binary | std::ios::in | std::ios::out);
         file.seekp(getpla_book(id) + 140 + sizeof(int));
         file.write(reinterpret_cast<char *>(&x), sizeof(int));
+//        std :: cout <<"!!!"<<total_cost<<std::endl;
         finance::add_pay(total_cost);
         return;
     }

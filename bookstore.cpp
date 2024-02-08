@@ -7,7 +7,6 @@
 # include "nametoisbn.h"
 # include "useridtoid.h"
 # include "book.h"
-# include <iomanip>
 using std::string;
 int gtpla(string s, int x)
 {
@@ -62,6 +61,7 @@ double strtodouble(string s)
         tmp /= 10.0;
         ansn += tmp * (s[i] - '0');
     }
+//    std::cout << s << "=?=" << fl * (anss + ansn) << std::endl;
     return fl * (anss + ansn);
 }
 bool checkint(string s)
@@ -134,8 +134,8 @@ void inva(string x)
 }
 int main()
 {
-//    freopen("3.in", "r", stdin);
-//    freopen("3.out", "w", stdout);
+//    freopen("6.in", "r", stdin);
+//    freopen("6.out", "w", stdout);
     account::init();
     finance::init();
     book::init_prog();
@@ -315,6 +315,7 @@ int main()
             a1 = iti::find(s1)[0];
             if (!checkint(s2)) {inva(); continue;}
             a2 = strtoint(s2); if (a2 <= 0) {inva(); continue;}
+            if (book::book_quantity(a1) < a2) {inva(); continue;}
             book::buy(a1, a2);
             continue;
         }
@@ -364,7 +365,8 @@ int main()
                 if (s1[1] == 'I')
                 {
                     m += 6; s2 = gtstr(s, m);
-                    if (s2 == "") {inva(); continue;}
+                    if (s2 == "" || s2 == book::book_isbn(id)) {inva(); continue;}
+                    if (iti::find(s2).size()) {inva(); continue;}
                     book::modify_isbn(id, s2);
                     continue;
                 }
@@ -412,7 +414,7 @@ int main()
             if (!checkint(s1)) {inva(); continue;}
             a1 = strtoint(s1); if (a1 <= 0) {inva(); continue;}
             if (!checkdouble(s2)) {inva(); continue;}
-            double d1 = strtodouble(s1); if (d1 <= 0) {inva(); continue;}
+            double d1 = strtodouble(s2); if (d1 <= 0) {inva(); continue;}
             book::import(a2, a1, d1);
             continue;
         }
@@ -430,6 +432,7 @@ int main()
                 continue;
             }
             a1 = strtoint(s1);
+            if (finance::que_earn(a1) < 0) {inva(); continue;}
             std::cout << "+ " << finance::que_earn(a1) << " - " << finance::que_pay(a1) << '\n';
             continue;
         }

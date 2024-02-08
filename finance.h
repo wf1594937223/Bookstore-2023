@@ -39,9 +39,13 @@ double que_earn(int count)
     fstream file; double x = 0, y = 0;
     file.open("0.fin", std::ios::binary | std::ios::in | std::ios::out);
     if (sum == 0 || count == 0) return 0;
-    file.seekg(getpla_fin(sum - count) + sizeof(int));
-    file.read(reinterpret_cast <char *> (&x), sizeof(double));
+    if (count > sum) return -1;
     if (sum == count) x = 0;
+    else
+    {
+        file.seekg(getpla_fin(sum - count) + sizeof(int));
+        file.read(reinterpret_cast <char *> (&x), sizeof(double));
+    }
     file.seekg(getpla_fin(sum) + sizeof(int));
     file.read(reinterpret_cast <char *> (&y), sizeof(double));
     return y - x;
@@ -50,22 +54,22 @@ double que_earn_all()
 {
     fstream file; double x, y; int count = sum;
     file.open("0.fin", std::ios::binary | std::ios::in | std::ios::out);
-    if (sum == 0 || count == 0) return 0;
-    file.seekg(getpla_fin(sum - count) + sizeof(int));
-    file.read(reinterpret_cast <char *> (&x), sizeof(double));
-    if (sum == count) x = 0;
     file.seekg(getpla_fin(sum) + sizeof(int));
     file.read(reinterpret_cast <char *> (&y), sizeof(double));
-    return y - x;
+    return y;
 }
 double que_pay(int count)
 {
     fstream file; double x, y;
     file.open("0.fin", std::ios::binary | std::ios::in | std::ios::out);
     if (sum == 0 || count == 0) return 0;
-    file.seekg(getpla_fin(sum - count) + sizeof(int) + sizeof(double));
-    file.read(reinterpret_cast <char *> (&x), sizeof(double));
+    if (count > sum) return -1;
     if (sum == count) x = 0;
+    else
+    {
+        file.seekg(getpla_fin(sum - count) + sizeof(int) + sizeof(double));
+        file.read(reinterpret_cast <char *> (&x), sizeof(double));
+    }
     file.seekg(getpla_fin(sum) + sizeof(int) + sizeof(double));
     file.read(reinterpret_cast <char *> (&y), sizeof(double));
     return y - x;
@@ -74,21 +78,21 @@ double que_pay_all()
 {
     fstream file; double x, y; int count = sum;
     file.open("0.fin", std::ios::binary | std::ios::in | std::ios::out);
-    if (sum == 0 || count == 0) return 0;
-    file.seekg(getpla_fin(sum - count) + sizeof(int) + sizeof(double));
-    file.read(reinterpret_cast <char *> (&x), sizeof(double));
-    if (sum == count) x = 0;
     file.seekg(getpla_fin(sum) + sizeof(int) + sizeof(double));
     file.read(reinterpret_cast <char *> (&y), sizeof(double));
-    return y - x;
+    return y;
 }
 void add_earn(double x)
 {
     fstream file; double u, v;
     file.open("0.fin", std::ios::binary | std::ios::in | std::ios::out);
-    file.seekg(getpla_fin(sum) + sizeof(int));
-    file.read(reinterpret_cast <char *> (&u), sizeof(double));
-    file.read(reinterpret_cast <char *> (&v), sizeof(double));
+    if (sum)
+    {
+        file.seekg(getpla_fin(sum) + sizeof(int));
+        file.read(reinterpret_cast <char *> (&u), sizeof(double));
+        file.read(reinterpret_cast <char *> (&v), sizeof(double));
+    }
+    else {u = 0; v = 0;}
     u += x;
     sum++;
     file.seekp(getpla_fin(sum));
@@ -100,9 +104,13 @@ void add_pay(double x)
 {
     fstream file; double u, v;
     file.open("0.fin", std::ios::binary | std::ios::in | std::ios::out);
-    file.seekg(getpla_fin(sum) + sizeof(int));
-    file.read(reinterpret_cast <char *> (&u), sizeof(double));
-    file.read(reinterpret_cast <char *> (&v), sizeof(double));
+    if (sum)
+    {
+        file.seekg(getpla_fin(sum) + sizeof(int));
+        file.read(reinterpret_cast <char *> (&u), sizeof(double));
+        file.read(reinterpret_cast <char *> (&v), sizeof(double));
+    }
+    else {u = 0; v = 0;}
     v += x;
     sum++;
     file.seekp(getpla_fin(sum));
