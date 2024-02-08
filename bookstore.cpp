@@ -134,8 +134,8 @@ void inva(string x)
 }
 int main()
 {
-    freopen("3.in", "r", stdin);
-    freopen("3.out", "w", stdout);
+//    freopen("3.in", "r", stdin);
+//    freopen("3.out", "w", stdout);
     account::init();
     finance::init();
     book::init_prog();
