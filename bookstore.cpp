@@ -7,6 +7,7 @@
 # include "nametoisbn.h"
 # include "useridtoid.h"
 # include "book.h"
+# include <iomanip>
 using std::string;
 int gtpla(string s, int x)
 {
@@ -43,7 +44,7 @@ int strtoint(string s)
     for (int i = 0; i < m; i++)
     {
         if (s[i] == '-') {fl = -1; continue;}
-        anss = (anss * 10) + s[i];
+        anss = (anss * 10) + s[i] - '0';
     }
     return anss * fl;
 }
@@ -94,7 +95,7 @@ void output(vector<int> ve)
         std::cout << book::book_bookname(ve[i]) << '\t';
         std::cout << book::book_author(ve[i]) << '\t';
         std::cout << book::book_keywords(ve[i]) << '\t';
-        std::cout << book::book_price(ve[i]) << '\t';
+        std::cout << std::fixed << std::setprecision(2) << book::book_price(ve[i]) << '\t';
         std::cout << book::book_quantity(ve[i]) << '\n';
     }
     if (!j) std::cout << '\n';
@@ -121,21 +122,34 @@ void inva()
     std::cout << "Invalid" << std::endl;
     return;
 }
+void inva(int x)
+{
+    std::cout << "Invalid-reason:" << x << std::endl;
+    return;
+}
+void inva(string x)
+{
+    std::cout << "Invalid-reason:" << x << std::endl;
+    return;
+}
 int main()
 {
 //    freopen("1.in", "r", stdin);
+//    freopen("4.out", "w", stdout);
     account::init();
     finance::init();
-    account_save::init_prog();
     book::init_prog();
     iti::init_prog();
     kti::init_prog();
     nti::init_prog();
     uti::init_prog();
     ati::init_prog();
+    account_save::init_prog();
     int i, j, n, m, acc_id, book_id;
     int a1, a2, a3, a4, a5;
     string s, s1, s2, s3, s4;
+//        std::cout << "OK!" << std::endl;
+//        return 0;
     while(1)
     {
         m = 0;
@@ -143,14 +157,14 @@ int main()
         if (s[0] == 'q' && s[1] == 'u' || s[0] == 'e' && s[1] == 'x') break;
         if (s[0] == 's' && s[1] == 'u')
         {
-            m = gtpla(s, m); s1 = gtstr(s, m);
+            m = gtpla(s, m); s1 = gtstr(s, m); //std::cout << s1 << std::endl;
             a1 = account::now_account(); a2 = account_save::account_state(a1);
-            if (!a2 || !uti::find(s1).size()) continue;
+            if (!uti::find(s1).size()) {inva(); continue;}
             acc_id = uti::find(s1)[0];
             n = account_save::account_state(acc_id); s3 = account_save::account_password(acc_id);
             a1 = account::now_account(); a2 = account_save::account_type(a1);
             m = gtpla(s, m); s2 = gtstr(s, m);
-            if (s2 == "" && n <= a2 || s2 != "" && s2 != s3) continue;
+            if (s2 == "" && n <= a2 || s2 != "" && s2 != s3) {inva(); continue;}
             account::login(acc_id);
             account_save::account_login(acc_id);
             continue;
@@ -199,10 +213,12 @@ int main()
         if (s[0] == 'u' && s[1] == 's')
         {
             a1 = account::now_account(); a2 = account_save::account_type(a1);
+//            std::cout << a2 << std::endl;
             if (a2 < 3) {inva(); continue;}
             m = gtpla(s, m); s1 = gtstr(s, m);
             m = gtpla(s, m); s2 = gtstr(s, m);
             m = gtpla(s, m); s3 = gtstr(s, m); a1 = strtoint(s3);
+//            std::cout << s3 << ' ' << a2 << ' ' <<  a1 << std::endl;
             m = gtpla(s, m); s3 = gtstr(s, m);
             if (a2 <= a1) {inva(); continue;}
             account_save::add(a1, s1, s2, s3);
@@ -384,7 +400,16 @@ int main()
             std::cout << "+ " << finance::que_earn(a1) << " - " << finance::que_pay(a1) << '\n';
             continue;
         }
-        inva();
+        int fll = 0;
+        for (i = s.size() - 1; i >= 0; i--)
+        {
+            if (s[i] != ' ')
+            {
+                fll = 1;
+                break;
+            }
+        }
+        if (fll) inva();
     }
 
     account::end();

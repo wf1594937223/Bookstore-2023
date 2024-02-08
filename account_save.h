@@ -24,9 +24,9 @@ namespace account_save//id, state, type(1,3,7), userid, password, username
         file.write(reinterpret_cast<char *>(&id), sizeof(int));
         file.write(reinterpret_cast<char *>(&state), sizeof(int));
         file.write(reinterpret_cast<char *>(&type), sizeof(int));
-        file.write(userid.c_str(), 60);
-        file.write(password.c_str(), 60);
-        file.write(username.c_str(), 60);
+        file.write(userid.c_str(), 64);
+        file.write(password.c_str(), 64);
+        file.write(username.c_str(), 64);
         uti::insert(userid, id);
     }//sizeof(int), 20, 60, 60, sizeof(int), sizeof(double), sizeof(double), 60
     int account_state(int id)
@@ -81,7 +81,7 @@ namespace account_save//id, state, type(1,3,7), userid, password, username
         fstream file;
         file.open("account_save.txt", std::ios::binary | std::ios::in | std::ios::out);
         file.seekp(getpla_user(id) + 64 + 3 * sizeof(int));
-        file.write(password.c_str(), 60);
+        file.write(password.c_str(), 64);
     }
     void del(int id)
     {
