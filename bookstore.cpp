@@ -301,7 +301,7 @@ int main()
                 output2(kti::find(s2));
                 continue;
             }
-            continue;
+            inva(); continue;
         }
         if (s[0] == 'b' && s[1] == 'u')
         {
@@ -348,11 +348,12 @@ int main()
             {
                 m = gtpla(s, m); s1 = gtstr(s, m);
                 if (s1 == "") break;
-                if (s1[1] == 'I') a1++;
-                if (s1[1] == 'n') a2++;
-                if (s1[1] == 'a') a3++;
-                if (s1[1] == 'k') a4++;
-                if (s1[1] == 'p') a5++;
+                if (s1[1] == 'I') {a1++; continue;}
+                if (s1[1] == 'n') {a2++; continue;}
+                if (s1[1] == 'a') {a3++; continue;}
+                if (s1[1] == 'k') {a4++; continue;}
+                if (s1[1] == 'p') {a5++; continue;}
+                a1 = 100;
             }
             if (a1 > 1 || a2 > 1 || a3 > 1 || a4 > 1 || a5 > 1) {inva(); continue;}
             m = 0;
@@ -364,8 +365,6 @@ int main()
                 {
                     m += 6; s2 = gtstr(s, m);
                     if (s2 == "") {inva(); continue;}
-                    m = gtpla(s, m); s4 = gtstr(s, m);
-                    if (s4 != "") {inva(); continue;}
                     book::modify_isbn(id, s2);
                     continue;
                 }
@@ -373,8 +372,6 @@ int main()
                 {
                     m += 7; s2 = gtstr2(s, m);
                     if (s2 == "") {inva(); continue;}
-                    m = gtpla(s, m); s4 = gtstr(s, m);
-                    if (s4 != "") {inva(); continue;}
                     book::modify_bookname(id, s2);
                     continue;
                 }
@@ -382,8 +379,6 @@ int main()
                 {
                     m += 9; s2 = gtstr2(s, m);
                     if (s2 == "") {inva(); continue;}
-                    m = gtpla(s, m); s4 = gtstr(s, m);
-                    if (s4 != "") {inva(); continue;}
                     book::modify_author(id, s2);
                     continue;
                 }
@@ -391,8 +386,6 @@ int main()
                 {
                     m += 10; s2 = gtstr2(s, m);
                     if (s2 == "") {inva(); continue;}
-                    m = gtpla(s, m); s4 = gtstr(s, m);
-                    if (s4 != "") {inva(); continue;}
                     book::modify_keywords(id, s2);
                     continue;
                 }
@@ -400,8 +393,6 @@ int main()
                 {
                     m += 7; s2 = gtstr2(s, m);
                     if (s2 == "") {inva(); continue;}
-                    m = gtpla(s, m); s4 = gtstr(s, m);
-                    if (s4 != "") {inva(); continue;}
                     book::modify_price(id, strtodouble(s2));
                     continue;
                 }
