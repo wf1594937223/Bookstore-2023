@@ -111,7 +111,7 @@ void output2(vector<string> ve)
         std::cout << book::book_bookname(k) << '\t';
         std::cout << book::book_author(k) << '\t';
         std::cout << book::book_keywords(k) << '\t';
-        std::cout << book::book_price(k) << '\t';
+        std::cout << std::fixed << std::setprecision(2) << book::book_price(k) << '\t';
         std::cout << book::book_quantity(k) << '\n';
     }
     if (!j) std::cout << '\n';
@@ -134,8 +134,8 @@ void inva(string x)
 }
 int main()
 {
-//    freopen("6.in", "r", stdin);
-//    freopen("6.out", "w", stdout);
+//    freopen("2.in", "r", stdin);
+//    freopen("2.out", "w", stdout);
     account::init();
     finance::init();
     book::init_prog();

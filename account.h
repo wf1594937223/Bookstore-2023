@@ -85,6 +85,7 @@ int now_select()
 void end()
 {
     fstream file;
+    while(sum) logout();
     file.open("0.acc", std::ios::binary | std::ios::in | std::ios::out);
     file.seekp(0);
     file.write(reinterpret_cast <char *> (&sum), sizeof(double));
