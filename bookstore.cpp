@@ -150,11 +150,10 @@ int main()
     string s, s1, s2, s3, s4, s5;
 //        std::cout << "OK!" << std::endl;
 //        return 0;
-    while(1)
+    while(std::getline(std::cin, s))
     {
-        std::cout << "OK!" << std::endl;
+//        std::cout << "OK!" << std::endl;
         m = 0;
-        std::getline(std::cin, s);
         if (s[0] == 'q' && s[1] == 'u' || s[0] == 'e' && s[1] == 'x') break;
         if (s[0] == 's' && s[1] == 'u')
         {
@@ -437,7 +436,6 @@ int main()
             std::cout << "+ " << finance::que_earn(a1) << " - " << finance::que_pay(a1) << '\n';
             continue;
         }
-        if (s == "") break;
         int fl = 0;
         for (i = s.size() - 1; i >= 0; i--)
         {
