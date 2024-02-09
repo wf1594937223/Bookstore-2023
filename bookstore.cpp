@@ -134,8 +134,8 @@ void inva(string x)
 }
 int main()
 {
-//    freopen("2.in", "r", stdin);
-//    freopen("2.out", "w", stdout);
+//    freopen("1.in", "r", stdin);
+//    freopen("1.out", "w", stdout);
     account::init();
     finance::init();
     book::init_prog();
@@ -152,6 +152,7 @@ int main()
 //        return 0;
     while(1)
     {
+        std::cout << "OK!" << std::endl;
         m = 0;
         std::getline(std::cin, s);
         if (s[0] == 'q' && s[1] == 'u' || s[0] == 'e' && s[1] == 'x') break;
@@ -436,6 +437,7 @@ int main()
             std::cout << "+ " << finance::que_earn(a1) << " - " << finance::que_pay(a1) << '\n';
             continue;
         }
+        if (s == "") break;
         int fl = 0;
         for (i = s.size() - 1; i >= 0; i--)
         {
