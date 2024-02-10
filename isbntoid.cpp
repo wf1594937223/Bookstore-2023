@@ -45,6 +45,10 @@ void init_total()
     file.close();
 	s = "1.iti";
 	file.open(s, std::ios::binary | std::ios::out);
+    file.write(s.c_str(), 64);
+	file.write(reinterpret_cast<char *>(&tmp), sizeof(int));
+	file.write(reinterpret_cast<char *>(&tmp), sizeof(int));
+	file.write(reinterpret_cast<char *>(&tmp), sizeof(int));
 	file.close();
     return;
 }
@@ -418,6 +422,7 @@ vector <int> find(string index)
     while(i)
     {
         if (!i) break;
+//        std::cout << "haha" << i << std::endl;
         file0.seekg(getpla_blo(i));
         int siz, x, y, z, val; string s1, s2;
         file0.read(reinterpret_cast<char *> (&siz), sizeof(int));
@@ -448,6 +453,7 @@ vector <int> find(string index)
 //			if (j == w)
 //			{
 //				std::cout << "Huge warning!" << std::endl;
+//              std::cout << j << ' ' << s1 << ' ' << u << ' ' << v << ' ' << w << std::endl;
 //				exit(0);
 //			}
 			j = w;
@@ -463,6 +469,7 @@ vector <int> find(string index)
             ve.push_back(u);
 //            std::cout << u << ' ';
 			tott++;
+//            std::cout << "huhu" << j << std::endl;
         }
         i = y;
     }
@@ -481,7 +488,7 @@ void init_prog()
 		file.read(reinterpret_cast<char *> (&tot_txt), sizeof(int));
 		file.read(reinterpret_cast<char *> (&beg), sizeof(int));
 		file.read(reinterpret_cast<char *> (&tot_str), sizeof(int));
-//		std::cout << tot_txt << beg << std::endl;
+//		std::cout << tot_txt << ' ' << beg << ' ' << tot_str << "!!!!!!" << std::endl;
 //		return 0;
 	}
 	file.close();
@@ -490,10 +497,11 @@ void init_prog()
 void end_prog()
 {
     fstream file;
-    file.open("0.txt", std::ios::binary | std::ios::in | std::ios::out);
+    file.open("0.iti", std::ios::binary | std::ios::in | std::ios::out);
 	file.write(reinterpret_cast<char *> (&tot_txt), sizeof(int));
 	file.write(reinterpret_cast<char *> (&beg), sizeof(int));
 	file.write(reinterpret_cast<char *> (&tot_str), sizeof(int));
+//    std::cout << tot_txt << ' ' << beg << ' ' << tot_str << "??????" << std::endl;
 	file.close();
 }
 }

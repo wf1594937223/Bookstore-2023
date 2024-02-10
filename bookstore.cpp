@@ -134,8 +134,8 @@ void inva(string x)
 }
 int main()
 {
-//    freopen("1.in", "r", stdin);
-//    freopen("1.out", "w", stdout);
+//    freopen("2.in", "r", stdin);
+//    freopen("2.out", "w", stdout);
     account::init();
     finance::init();
     book::init_prog();
@@ -152,23 +152,24 @@ int main()
 //        return 0;
     while(std::getline(std::cin, s))
     {
-//        std::cout << "OK!" << std::endl;
+//        std::cout << s << std::endl;
+//        if(!n) break;
         m = 0;
         if (s[0] == 'q' && s[1] == 'u' || s[0] == 'e' && s[1] == 'x') break;
         if (s[0] == 's' && s[1] == 'u')
         {
             m = gtpla(s, m); s1 = gtstr(s, m); //std::cout << s1 << std::endl;
-            a1 = account::now_account(); a2 = account_save::account_state(a1);
             if (!uti::find(s1).size()) {inva(); continue;}
             acc_id = uti::find(s1)[0];
             n = account_save::account_state(acc_id); s3 = account_save::account_password(acc_id);
             a1 = account::now_account(); a2 = account_save::account_type(a1);
             m = gtpla(s, m); s2 = gtstr(s, m);
-            if (s2 == "" && n <= a2 || s2 != "" && s2 != s3) {inva(); continue;}
+            if (s2 == "" && n >= a2 || s2 != "" && s2 != s3) {inva(); continue;}
             m = gtpla(s, m); s4 = gtstr(s, m);
             if (s4 != "") {inva(); continue;}
             account::login(acc_id);
             account_save::account_login(acc_id);
+            std::cout << "!!!  " << n << std::endl;
             continue;
         }
         if (s[0] == 'l' && s[1] == 'o')
@@ -309,7 +310,7 @@ int main()
             if (a2 < 1) {inva(); continue;}
             m = gtpla(s, m); s1 = gtstr(s, m);
             m = gtpla(s, m); s2 = gtstr(s, m);
-            if (!iti::find(s1).size()) continue;
+            if (!iti::find(s1).size()) {inva(); continue;}
             m = gtpla(s, m); s4 = gtstr(s, m);
             if (s4 != "") {inva(); continue;}
             a1 = iti::find(s1)[0];
@@ -328,10 +329,14 @@ int main()
             if (s4 != "") {inva(); continue;}
             if (!iti::find(s1).size())
             {
+//            std::cout << "OK!1" << std::endl;
                 book::add(s1);
+//            std::cout << "OK!2" << std::endl;
                 a1 = iti::find(s1)[0];
+//            std::cout << "OK!3" << std::endl;
 //            std::cout << a1 << std::endl;
                 account::select(a1);
+//            std::cout << "OK!4" << std::endl;
                 continue;
             }
             a1 = iti::find(s1)[0];
