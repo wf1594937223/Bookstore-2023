@@ -161,7 +161,7 @@ int main()
             m = gtpla(s, m); s1 = gtstr(s, m); //std::cout << s1 << std::endl;
             if (!uti::find(s1).size()) {inva(); continue;}
             acc_id = uti::find(s1)[0];
-            n = account_save::account_state(acc_id); s3 = account_save::account_password(acc_id);
+            n = account_save::account_type(acc_id); s3 = account_save::account_password(acc_id);
             a1 = account::now_account(); a2 = account_save::account_type(a1);
             m = gtpla(s, m); s2 = gtstr(s, m);
             if (s2 == "" && n >= a2 || s2 != "" && s2 != s3) {inva(); continue;}
