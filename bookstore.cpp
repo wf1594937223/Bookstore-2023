@@ -169,7 +169,7 @@ int main()
             if (s4 != "") {inva(); continue;}
             account::login(acc_id);
             account_save::account_login(acc_id);
-            std::cout << "!!!  " << n << std::endl;
+//            std::cout << "!!!  " << n << std::endl;
             continue;
         }
         if (s[0] == 'l' && s[1] == 'o')
