@@ -134,8 +134,8 @@ void inva(string x)
 }
 int main()
 {
-//    freopen("2.in", "r", stdin);
-//    freopen("2.out", "w", stdout);
+//    freopen("3.in", "r", stdin);
+//    freopen("3.out", "w", stdout);
     account::init();
     finance::init();
     book::init_prog();
@@ -189,6 +189,7 @@ int main()
             m = gtpla(s, m); s1 = gtstr(s, m);
             m = gtpla(s, m); s2 = gtstr(s, m);
             m = gtpla(s, m); s3 = gtstr(s, m);
+            if (iti::find(s1).size()) {inva(); continue;}
             if (s3 == "") {inva(); continue;}
             m = gtpla(s, m); s4 = gtstr(s, m);
             if (s4 != "") {inva(); continue;}

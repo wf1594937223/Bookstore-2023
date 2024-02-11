@@ -1,220 +1,79 @@
-su root PKX4ga2
-!!!  1
-logout
-select 978-0-346-59823-2
 Invalid
-modify -name="fair" -keyword="douse" -price=5.22
 Invalid
-su nkIt8LYyGrMvDX O
-!!!  1
-select 978-1-59466-314-7
-modify -author="MckenzieWhite" -price=422.34
-useradd Hwi1zRQqPtNTP0uNRTulHCQDR1H r_JLQWcpzrDz0n 1 JosephPierce
-useradd KgAU_Y8TXx7aO30Ga C7E0PePY1Gj2g_fARXaamKJLsm 1 BrentMurphy
-useradd PMVfH98fiCX52qDIn567tM frmE1L3S5AW 1 KurtCooper
-useradd ZW6ffwDAftzKeHywMyzOqJ ETCyXvjnfSD5JQHIL4VGO 1 KathyNichols
-logout
-select 978-1-5005-7607-3
 Invalid
-modify -name="traitorous" -author="JefferyHill" -keyword="frigate|grandniece" -price=159.57
 Invalid
-su 2HqSjyyVXj1XtJn CV6zznKl8T7LaZ
-!!!  1
-logout
-su PMVfH98fiCX52qDIn567tM frmE1L3S5AW
-!!!  1
-buy 978-0-346-59823-2 1
-19
 323.72
-show -author="MckenzieWhite"
 978-0-641-43198-2	not	MckenzieWhite	Syria|tulle|frigate|hiatus	359.46	0
 978-1-57076-066-2	profile	MckenzieWhite	Syria|bianco	245.51	1
 978-1-59466-314-7	framework	MckenzieWhite	hiatus|purslane	422.34	0
-select 978-1-4693-2357-2
 Invalid
-modify -author="ZacharySilva" -keyword="Syria|douse|nutritious|greenwood"
 Invalid
-buy 978-1-4693-2357-2 1
-9
 342.19
-logout
-select 978-0-346-59823-2
 Invalid
-modify -price=137.80
 Invalid
-select 978-1-57076-066-2
 Invalid
-register LGvirzhMEZPNPAs556tf55 tPtNQrxOfiqlvMU2rT1 TimothyCohen
-su 9Ar_ezr v
-!!!  1
-show -author="AmandaDean"
 978-0-88211-570-2	category	AmandaDean	frigate|hiatus|Syria	311.12	0
-buy 978-1-59466-314-7 1
 Invalid
-select 978-0-641-43198-2
 Invalid
-modify -name="foxtail" -author="JonathanAdams" -price=449.39
 Invalid
-select 978-1-4905-6971-0
 Invalid
-modify -name="brother" -author="MckenzieWhite" -keyword="purslane|grandniece" -price=14.87
 Invalid
-logout
-su PMVfH98fiCX52qDIn567tM frmE1L3S5AW
-!!!  1
-show -keyword="bianco"
 978-0-346-59823-2	syllabic	JefferyHill	denizen|bianco	323.72	18
 978-1-4693-2357-2	poultry	RavenHancock	bianco	342.19	8
 978-1-57076-066-2	profile	MckenzieWhite	Syria|bianco	245.51	1
-logout
-select 978-0-647-74020-0
 Invalid
-modify -name="Jorge" -author="JefferyHill" -keyword="greenwood|purslane" -price=492.57
 Invalid
-select 978-0-416-72400-4
 Invalid
-modify -name="clutter" -author="JefferyHill" -keyword="greenwood|denizen|incessant|grandniece" -price=146.87
 Invalid
-select 978-0-641-43198-2
 Invalid
-modify -name="hideous" -author="AmandaDean" -keyword="frigate|grandniece" -price=1.12
 Invalid
-register dRGm_9wM742YOboWdkmb wF4Ck_bDCW0lOH MelissaTownsend
-register jT7GupaD 6Nqv8bHmFSP0yXD KevinMorgan
-select 978-0-88211-570-2
 Invalid
-modify -name="skill" -price=194.78
 Invalid
-su OsotwBv5yNn_S8DfZAdOMed b8AMr5EwUA_JuTydTnH5ckwCb6S
-!!!  1
-select 978-0-615-46275-2
 Invalid
-modify -name="eohippus" -author="JonathanAdams" -keyword="Watkins" -price=287.62
 Invalid
-logout
-register wFZrr6 wGY5pj3q_ JohnDavis
-su UlIpSmNA2O i5dN2czJI9PpfQtI4igSJ
-!!!  1
-buy 978-0-615-46275-2 1
-select 978-0-88211-570-2
 Invalid
-modify -name="Vishnu" -author="NathanielOdom" -keyword="nutritious" -price=335.13
 Invalid
-show -ISBN=978-0-641-43198-2
+Invalid
 978-0-641-43198-2	not	MckenzieWhite	Syria|tulle|frigate|hiatus	359.46	0
-buy 978-1-59466-314-7 1
 Invalid
-select 978-1-4905-6971-0
 Invalid
-modify -name="Bergman" -author="JefferyHill" -keyword="douse|hiatus|tulle|withheld" -price=159.58
 Invalid
-logout
-su zSHHShLY1OI8rEPSK_DQNwXO SvLTf
-!!!  1
-buy 978-1-4905-6971-0 1
-buy 978-0-514-80251-2 1
-select 978-0-513-66114-1
 Invalid
-modify -name="rowdy" -author="MckenzieWhite" -keyword="denizen|frigate|Watkins|incessant" -price=479.44
 Invalid
-show -ISBN=978-1-59466-314-7
+Invalid
+Invalid
 978-1-59466-314-7	framework	MckenzieWhite	hiatus|purslane	422.34	0
-logout
-register FKsm8k 0vYvrR3w JamesDixon
-su zSHHShLY1OI8rEPSK_DQNwXO SvLTf
-!!!  1
-logout
-su nkIt8LYyGrMvDX O
-!!!  1
-useradd RTcVgrAxY4tg3OnKAlxUI_sV023xFa NCig3FDAMUzQPX2k9m 1 MatthewSmith
-select 978-0-89779-874-7
-modify -name="nurture" -author="MckenzieWhite" -keyword="Syria|purslane|nutritious" -price=191.68
-select 978-0-09-047259-8
-modify -name="conveyor" -author="ZacharySilva" -keyword="frigate|Syria" -price=20.10
-useradd rJcpjGUFd6HK4akL6F9eNanCL 9NIyEm 1 JamesCharles
-select 978-0-7827-9310-9
-modify -name="immigrate" -author="MonicaZavala" -keyword="greenwood|nutritious|denizen" -price=119.05
-import 10 1258.56
-logout
-register iRnCHWn8p5FgbzhUCMzTgIyUl 5eCbH_1WHi4AaEH9QrV9Wsi KarenMelton
-su BHoe6QATTCN2dpznHX5ko5YKl IEh
-!!!  1
-buy 978-1-261-59338-8 1
 Invalid
-select 978-0-7827-9310-9
 Invalid
-modify -name="perilous" -author="JefferyHill" -keyword="tulle|lordosis|incessant|purslane" -price=328.80
 Invalid
-buy 978-0-346-59823-2 1
-18
 323.72
-logout
-su RTcVgrAxY4tg3OnKAlxUI_sV023xFa NCig3FDAMUzQPX2k9m
-!!!  1
-select 978-1-57076-066-2
 Invalid
-modify -keyword="hiatus|nutritious|grandniece|denizen"
 Invalid
-buy 978-1-4693-2357-2 1
-8
 342.19
-select 978-0-7233-3606-8
 Invalid
-modify -name="wove" -author="TiffanyBrown" -keyword="incessant" -price=78.80
 Invalid
-logout
-select 978-0-88211-570-2
 Invalid
-modify -author="JonathanAdams"
 Invalid
-register 82By7iz1wUx THSVxgQhX JillianCarroll
-su UlIpSmNA2O i5dN2czJI9PpfQtI4igSJ
-!!!  1
-select 978-0-513-66114-1
 Invalid
-modify -name="phoebe" -author="JonathanAdams" -price=156.87
 Invalid
-show -author="ZacharySilva"
 978-0-09-047259-8	conveyor	ZacharySilva	frigate|Syria	20.10	0
-select 978-1-66922-045-9
 Invalid
-modify -name="periphery" -author="TiffanyBrown" -keyword="frigate|grandniece|purslane|lordosis|Syria" -price=164.71
 Invalid
-select 978-0-910812-86-3
 Invalid
-modify -name="bleak" -author="MonicaZavala" -keyword="bianco" -price=259.24
 Invalid
-logout
-su 9Ar_ezr v
-!!!  1
-select 978-0-458-78062-4
 Invalid
-modify -name="econometric" -author="BryanJohnson" -keyword="frigate|purslane|grandniece|hiatus|incessant" -price=353.53
 Invalid
-buy 978-0-641-43198-2 1
 Invalid
-show -ISBN=978-0-910812-86-3
 
-select 978-0-615-46275-2
 Invalid
-modify -name="heterogamous" -author="JonathanAdams" -keyword="withheld|purslane|nutritious"
 Invalid
-show -keyword="nutritious"
 978-0-7827-9310-9	immigrate	MonicaZavala	greenwood|nutritious|denizen	119.05	10
 978-0-89779-874-7	nurture	MckenzieWhite	Syria|purslane|nutritious	191.68	0
-buy 978-1-57076-066-2 1
-1
 245.51
-buy 978-0-7233-3606-8 1
-passwd nkIt8LYyGrMvDX fRTRwy83QKvvHExwiqcocVZwH Ju6xwndExn7yKVEh3UFsI7Xo
 Invalid
-select 978-0-641-43198-2
 Invalid
-modify -keyword="hiatus|Watkins|douse|incessant" -price=87.45
 Invalid
-select 978-1-59466-314-7
 Invalid
-modify -name="ozone" -author="JefferyHill" -keyword="grandniece|tulle" -price=263.93
 Invalid
-buy 978-1-57076-066-2 1
+Invalid
 Invalid
