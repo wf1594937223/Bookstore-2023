@@ -134,11 +134,11 @@ void inva(string x)
 }
 int main()
 {
-    string filename;
-    std::cin >> filename;
-    string filein = filename + ".in", fileout = filename + ".out";
-    freopen(filein.c_str(), "r", stdin);
-    freopen(fileout.c_str(), "w", stdout);
+//    string filename;
+//    std::cin >> filename;
+//    string filein = filename + ".in", fileout = filename + ".out";
+//    freopen(filein.c_str(), "r", stdin);
+//    freopen(fileout.c_str(), "w", stdout);
     account::init();
     finance::init();
     book::init_prog();
