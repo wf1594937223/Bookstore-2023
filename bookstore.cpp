@@ -453,7 +453,7 @@ int main()
             }
             if (!checkint(s1)) {inva(); continue;}
             a1 = strtoint(s1);
-//            if (finance::que_earn(a1) < 0) {inva(); continue;}
+            if (finance::que_earn(a1) < 0) {inva(); continue;}
             if (a1 == 0)
             {
                 std::cout << std::endl;
