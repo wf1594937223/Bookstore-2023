@@ -448,7 +448,7 @@ int main()
             if (s4 != "") {inva(); continue;}
             if (s1 == "")
             {
-                std::cout << "+ " << finance::que_earn_all() << " - " << finance::que_pay_all() << '\n';
+                std::cout << "+ " << std::fixed << std::setprecision(2) << finance::que_earn_all() << " - " << std::fixed << std::setprecision(2) << finance::que_pay_all() << '\n';
                 continue;
             }
             if (!checkint(s1)) {inva(); continue;}
@@ -459,7 +459,7 @@ int main()
                 std::cout << std::endl;
                 continue;
             }
-            std::cout << "+ " << finance::que_earn(a1) << " - " << finance::que_pay(a1) << '\n';
+            std::cout << "+ " << std::fixed << std::setprecision(2) << finance::que_earn(a1) << " - " << std::fixed << std::setprecision(2) << finance::que_pay(a1) << '\n';
             continue;
         }
         int fl = 0;
