@@ -4,6 +4,7 @@
 # include <fstream>
 # include <string>
 # include <vector>
+# include "account_save.h"
 using std::string;
 using std::fstream;
 using std::ifstream;
@@ -53,18 +54,6 @@ void select(int book_id)
     file.write(reinterpret_cast <char *> (&book_id), sizeof(int));
     return;
 }
-void logout()
-{
-    int x = 0;
-    fstream file;
-    if (!sum) return;
-    file.open("0.acc", std::ios::binary | std::ios::in | std::ios::out);
-    file.seekp(getpla_acc(sum));
-    file.write(reinterpret_cast <char *> (&x), sizeof(int));
-    file.write(reinterpret_cast <char *> (&x), sizeof(int));
-    sum--;
-    return; 
-}
 int now_account()
 {
     fstream file; int x;
@@ -73,6 +62,19 @@ int now_account()
     file.seekg(getpla_acc(sum));
     file.read(reinterpret_cast <char *> (&x), sizeof(int));
     return x;
+}
+void logout()
+{
+    int x = 0, id = now_account();
+    fstream file;
+    if (!sum) return;
+    file.open("0.acc", std::ios::binary | std::ios::in | std::ios::out);
+    file.seekp(getpla_acc(sum));
+    file.write(reinterpret_cast <char *> (&x), sizeof(int));
+    file.write(reinterpret_cast <char *> (&x), sizeof(int));
+    sum--;
+    account_save::account_logout(id);
+    return; 
 }
 int now_select()
 {

@@ -199,6 +199,7 @@ namespace book
     }
     void modify_isbn(int id, string isbn)
     {
+        string s1 = book_bookname(id), s2 = book_author(id), s3 = book_keywords(id), s4 = book_isbn(id);
         if (iti::find(isbn).size()) return;
         modify_bookname(id, "");
         modify_author(id, "");
@@ -207,7 +208,6 @@ namespace book
         file.open("book.txt", std::ios::binary | std::ios::in | std::ios::out);
         file.seekp(getpla_book(id) + sizeof(int));
         file.write(isbn.c_str(), 20);
-        string s1 = book_bookname(id), s2 = book_author(id), s3 = book_keywords(id), s4 = book_isbn(id);
         iti::del(s4, id);
         modify_bookname(id, s1);
         modify_author(id, s2);

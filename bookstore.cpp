@@ -134,8 +134,11 @@ void inva(string x)
 }
 int main()
 {
-//    freopen("3.in", "r", stdin);
-//    freopen("3.out", "w", stdout);
+    string filename;
+    std::cin >> filename;
+    string filein = filename + ".in", fileout = filename + ".out";
+    freopen(filein.c_str(), "r", stdin);
+    freopen(fileout.c_str(), "w", stdout);
     account::init();
     finance::init();
     book::init_prog();
@@ -179,8 +182,8 @@ int main()
             if (a2 < 1) {inva(); continue;}
             m = gtpla(s, m); s4 = gtstr(s, m);
             if (s4 != "") {inva(); continue;}
-            int id = account::now_account();
-            account_save::account_logout(id);
+//            int id = account::now_account();
+//            account_save::account_logout(id);
             account::logout();
             continue;
         }
@@ -189,7 +192,7 @@ int main()
             m = gtpla(s, m); s1 = gtstr(s, m);
             m = gtpla(s, m); s2 = gtstr(s, m);
             m = gtpla(s, m); s3 = gtstr(s, m);
-            if (iti::find(s1).size()) {inva(); continue;}
+            if (uti::find(s1).size()) {inva(); continue;}
             if (s3 == "") {inva(); continue;}
             m = gtpla(s, m); s4 = gtstr(s, m);
             if (s4 != "") {inva(); continue;}
@@ -437,8 +440,14 @@ int main()
                 std::cout << "+ " << finance::que_earn_all() << " - " << finance::que_pay_all() << '\n';
                 continue;
             }
+            if (!checkint(s1)) {inva(); continue;}
             a1 = strtoint(s1);
-            if (finance::que_earn(a1) < 0) {inva(); continue;}
+//            if (finance::que_earn(a1) < 0) {inva(); continue;}
+            if (a1 == 0)
+            {
+                std::cout << std::endl;
+                continue;
+            }
             std::cout << "+ " << finance::que_earn(a1) << " - " << finance::que_pay(a1) << '\n';
             continue;
         }
