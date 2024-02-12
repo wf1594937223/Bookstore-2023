@@ -132,6 +132,17 @@ void inva(string x)
     std::cout << "Invalid-reason:" << x << std::endl;
     return;
 }
+bool keywordcheck(string s)
+{
+    std::vector < string > ve = book::keywords_split(s);
+    int i, j, n = ve.size();
+    for (i = 0; i < n; i++)
+    {
+        for (j = i + 1; j < n; j++)
+            if (ve[i] == ve[j]) return false;
+    }
+    return true;
+}
 int main()
 {
 //    string filename;
@@ -396,14 +407,14 @@ int main()
                 if (s1[1] == 'k')
                 {
                     m += 10; s2 = gtstr2(s, m);
-                    if (s2 == "") {inva(); continue;}
+                    if (s2 == "" || !keywordcheck(s2)) {inva(); continue;}
                     book::modify_keywords(id, s2);
                     continue;
                 }
                 if (s1[1] == 'p')
                 {
                     m += 7; s2 = gtstr2(s, m);
-                    if (s2 == "") {inva(); continue;}
+                    if (s2 == "" || !checkdouble(s2)) {inva(); continue;}
                     book::modify_price(id, strtodouble(s2));
                     continue;
                 }
